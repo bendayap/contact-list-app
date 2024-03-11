@@ -3,9 +3,9 @@
 import React, { FC } from "react"
 import { observer } from "mobx-react-lite"
 import { ScrollView, StyleSheet } from "react-native"
-import { AppStackScreenProps } from "app/navigators"
-import { Screen, Text } from "app/components"
-import { Post } from "app/services/api"
+import { AppStackScreenProps } from "../navigators"
+import { Screen, Text } from "../components"
+import { Post } from "../services/api"
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
 
 interface PostDetailScreenProps extends NativeStackScreenProps<AppStackScreenProps<"PostDetail">> {}

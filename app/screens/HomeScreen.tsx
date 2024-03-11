@@ -5,13 +5,13 @@
 import React, { FC, useEffect, useState } from "react"
 import { observer } from "mobx-react-lite"
 import { StyleSheet, TouchableOpacity, View, VirtualizedList } from "react-native"
-import { AppStackScreenProps } from "app/navigators"
-import { Screen, Text } from "app/components"
+import { AppStackScreenProps } from "../navigators"
+import { Screen, Text } from "../components"
 import { useNavigation } from "@react-navigation/native"
-import { Post, api } from "app/services/api"
+import { Post, api } from "../services/api"
 import { NativeStackNavigationProp } from "@react-navigation/native-stack"
-import { LoadingIndicator } from "app/components/LoadingIndicator"
-import { createAlertModal } from "app/utils/alert"
+import { LoadingIndicator } from "../components/LoadingIndicator"
+import { createAlertModal } from "../utils/alert"
 
 interface HomeScreenProps extends AppStackScreenProps<"Home"> {}
 
