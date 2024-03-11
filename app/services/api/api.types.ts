@@ -34,6 +34,13 @@ export interface ApiFeedResponse {
   items: EpisodeItem[]
 }
 
+export type Post = {
+  body: string
+  id: number
+  title: string
+  userId: number
+}
+
 /**
  * The options used to configure apisauce.
  */

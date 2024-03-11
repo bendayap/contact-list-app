@@ -14,6 +14,7 @@ import {
 } from "react-native"
 import { colors } from "../theme"
 import { ExtendedEdge, useSafeAreaInsetsStyle } from "../utils/useSafeAreaInsetsStyle"
+import { useSafeAreaInsets } from "react-native-safe-area-context"
 
 interface BaseScreenProps {
   /**
@@ -237,8 +238,17 @@ export function Screen(props: ScreenProps) {
 
   const $containerInsets = useSafeAreaInsetsStyle(safeAreaEdges)
 
+  const useInset = useSafeAreaInsets()
+
   return (
-    <View style={[$containerStyle, { backgroundColor }, $containerInsets]}>
+    <View
+      style={[
+        $containerStyle,
+        { backgroundColor },
+        $containerInsets,
+        { marginBottom: useInset.bottom },
+      ]}
+    >
       <StatusBar style={statusBarStyle} {...StatusBarProps} />
 
       <KeyboardAvoidingView

@@ -8,7 +8,7 @@
 import { ApiResponse, ApisauceInstance, create } from "apisauce"
 import Config from "../../config"
 import { GeneralApiProblem, getGeneralApiProblem } from "./apiProblem"
-import type { ApiConfig, ApiFeedResponse } from "./api.types"
+import type { ApiConfig, ApiFeedResponse, Post } from "./api.types"
 import type { EpisodeSnapshotIn } from "../../models/Episode"
 
 /**
@@ -67,6 +67,31 @@ export class Api {
         })) ?? []
 
       return { kind: "ok", episodes }
+    } catch (e) {
+      if (__DEV__ && e instanceof Error) {
+        console.error(`Bad data: ${e.message}\n${response.data}`, e.stack)
+      }
+      return { kind: "bad-data" }
+    }
+  }
+
+  async getPosts(): Promise<{ kind: string; data: Post[] } | GeneralApiProblem> {
+    // make the api call
+    const response: ApiResponse<Post[]> = await this.apisauce.get(
+      `https://jsonplaceholder.typicode.com/posts`,
+    )
+
+    // the typical ways to die when calling an api
+    if (!response.ok) {
+      const problem = getGeneralApiProblem(response)
+      if (problem) return problem
+    }
+
+    // transform the data into the format we are expecting
+    try {
+      const data = response.data as Post[]
+
+      return { kind: "ok", data }
     } catch (e) {
       if (__DEV__ && e instanceof Error) {
         console.error(`Bad data: ${e.message}\n${response.data}`, e.stack)
