@@ -4,11 +4,10 @@
  * Generally speaking, it will contain an auth flow (registration, login, forgot password)
  * and a "main" flow which the user will use once logged in.
  */
-import { DarkTheme, DefaultTheme, NavigationContainer } from "@react-navigation/native"
+import { DefaultTheme, NavigationContainer } from "@react-navigation/native"
 import { createNativeStackNavigator, NativeStackScreenProps } from "@react-navigation/native-stack"
 import { observer } from "mobx-react-lite"
 import React from "react"
-import { useColorScheme } from "react-native"
 import * as Screens from "../screens"
 import Config from "../config"
 import { navigationRef, useBackButtonHandler } from "./navigationUtilities"
@@ -28,10 +27,8 @@ import { colors } from "../theme"
  *   https://reactnavigation.org/docs/typescript/#organizing-types
  */
 export type AppStackParamList = {
-  // 🔥 Your screens go here
   Home: undefined
   PostDetail: undefined
-  // IGNITE_GENERATOR_ANCHOR_APP_STACK_PARAM_LIST
 }
 
 /**
@@ -50,14 +47,23 @@ const Stack = createNativeStackNavigator<AppStackParamList>()
 
 const AppStack = observer(function AppStack() {
   return (
+    // Setup Navigator and styles
     <Stack.Navigator
-      screenOptions={{ headerShown: true, navigationBarColor: colors.background }}
+      screenOptions={{
+        headerShown: true,
+        navigationBarColor: colors.background,
+        headerTitleAlign: "center",
+      }}
       initialRouteName={"Home"}
     >
-      {/** 🔥 Your screens go here */}
-      <Stack.Screen name="Home" component={Screens.HomeScreen} />
-      <Stack.Screen name="PostDetail" component={Screens.PostDetailScreen} />
-      {/* IGNITE_GENERATOR_ANCHOR_APP_STACK_SCREENS */}
+      {/* HomeScreen */}
+      <Stack.Screen name="Home" component={Screens.HomeScreen} options={{ headerTitle: "Home" }} />
+      {/* PostDetailScreen */}
+      <Stack.Screen
+        name="PostDetail"
+        component={Screens.PostDetailScreen}
+        options={{ headerTitle: "Post Detail" }}
+      />
     </Stack.Navigator>
   )
 })
@@ -66,16 +72,10 @@ export interface NavigationProps
   extends Partial<React.ComponentProps<typeof NavigationContainer>> {}
 
 export const AppNavigator = observer(function AppNavigator(props: NavigationProps) {
-  const colorScheme = useColorScheme()
-
   useBackButtonHandler((routeName) => exitRoutes.includes(routeName))
 
   return (
-    <NavigationContainer
-      ref={navigationRef}
-      theme={colorScheme === "dark" ? DarkTheme : DefaultTheme}
-      {...props}
-    >
+    <NavigationContainer ref={navigationRef} theme={DefaultTheme} {...props}>
       <AppStack />
     </NavigationContainer>
   )

@@ -42,9 +42,7 @@ export class Api {
 
   async getPosts(): Promise<{ kind: string; data: Post[] } | GeneralApiProblem> {
     // make the api call
-    const response: ApiResponse<Post[]> = await this.apisauce.get(
-      `https://jsonplaceholder.typicode.com/posts`,
-    )
+    const response: ApiResponse<Post[]> = await this.apisauce.get("posts")
 
     // the typical ways to die when calling an api
     if (!response.ok) {

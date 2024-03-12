@@ -22,8 +22,11 @@ export const PostDetailScreen: FC<PostDetailScreenProps> = observer(function Pos
   return (
     <Screen preset="fixed" contentContainerStyle={styles.root}>
       <ScrollView style={styles.scrollView} contentContainerStyle={styles.mainContainer}>
+        {/* post Id */}
         <Text style={styles.postId}>{`Post ID: ${post.id}`}</Text>
+        {/* title */}
         <Text style={styles.title} text={post.title} />
+        {/* body content */}
         <Text style={styles.body} text={post.body} />
       </ScrollView>
     </Screen>
@@ -63,9 +66,5 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: 20,
     textAlign: "justify",
-    // justifyContent: "center",
-    // alignItems: "center",
-    // alignContent: "center",
-    // alignSelf: "center",
   },
 })
