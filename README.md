@@ -16,7 +16,7 @@ yarn android    // run Android
 
 The apk is located at path others/contact-list-app.apk
 
-#### or
+or
 
 You can get the build from <a href="https://expo.dev/accounts/bendayap/projects/contact-list-app/builds/6b14fbc8-96d3-46c5-9de9-b098b95f31ae" target="_blank">here</a>
 
