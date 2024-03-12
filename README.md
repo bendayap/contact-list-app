@@ -2,6 +2,16 @@
 
 A contact list app built with React Native, the application is current targeting Android only, if you build IOS, there may be have different in UI.
 
+## Run on iOS/Android
+
+To run the app on iOS or Android device, first need to install the dependencies by `yarn install`, then run commnad according to desired platform.
+
+```
+yarn install
+yarn ios        // run iOS
+yarn android    // run Android
+```
+
 ## APK File
 
 The apk is located at path others/contact-list-app.apk
