@@ -29,17 +29,22 @@ export const HomeScreen: FC<HomeScreenProps> = observer(function HomeScreen() {
   const getPosts = async () => {
     setIsFetching(true)
     try {
+      // fetch posts
       const getPostsResponse = await api.getPosts()
+
       if (getPostsResponse.kind === "ok") {
+        // calculate total number of pages
         const data = getPostsResponse.data as Post[]
         if (data.length % postsPerPage > 0) {
           setTotalpages(data.length / postsPerPage)
         } else {
+          // remove the last page if the last page is empty
           const numberOfPages = data.length > 0 ? data.length / postsPerPage - 1 : 1
           setTotalpages(numberOfPages)
         }
         setAllPosts(data)
       } else {
+        // handle if any error occurs
         createAlertModal(getPostsResponse.kind, async () => await getPosts())
       }
     } catch (e) {
@@ -54,6 +59,7 @@ export const HomeScreen: FC<HomeScreenProps> = observer(function HomeScreen() {
 
   useEffect(() => {
     if (allPosts.length > 0) {
+      // set list of posts to display on post list update and pagination changes
       const startIndex = postsPerPage * currentPageIndex
       const targetIndex = postsPerPage * currentPageIndex + postsPerPage
       const postsOfThePage = allPosts.slice(startIndex, targetIndex)
@@ -102,6 +108,7 @@ export const HomeScreen: FC<HomeScreenProps> = observer(function HomeScreen() {
   }
 
   const renderPosts = () => {
+    // render list of posts to display
     return (
       <VirtualizedList
         style={styles.scrollView}
@@ -121,6 +128,7 @@ export const HomeScreen: FC<HomeScreenProps> = observer(function HomeScreen() {
   const renderPaginationButtons = () => {
     const handlePageClick = (p: number) => setCurrentPageIndex(p)
 
+    // calculate page numbers to display
     const maxButtonsToShow = 7
     let startPage = Math.max(0, currentPageIndex - Math.floor(maxButtonsToShow / 2))
     const endPage = Math.min(totalPages, startPage + maxButtonsToShow - 1)
@@ -131,6 +139,7 @@ export const HomeScreen: FC<HomeScreenProps> = observer(function HomeScreen() {
 
     const buttons = []
 
+    // generate page buttons
     for (let i = startPage; i <= endPage; i++) {
       buttons.push(
         <TouchableOpacity

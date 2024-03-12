@@ -1,164 +1,33 @@
-# Welcome to your new ignited app!
+# Contact List App
 
-[![CircleCI](https://circleci.com/gh/infinitered/ignite.svg?style=svg)](https://circleci.com/gh/infinitered/ignite)
+A contact list app built with React Native, the application is current targeting Android only, if you build IOS, there may be have different in UI.
 
-## The latest and greatest boilerplate for Infinite Red opinions
+## APK File
 
-This is the boilerplate that [Infinite Red](https://infinite.red) uses as a way to test bleeding-edge changes to our React Native stack.
+The apk is located at path others/contact-list-app.apk
 
-Currently includes:
+#### or
 
-- React Native
-- React Navigation
-- MobX State Tree
-- TypeScript
-- And more!
+You can get the build from <a href="https://expo.dev/accounts/bendayap/projects/contact-list-app/builds/6b14fbc8-96d3-46c5-9de9-b098b95f31ae" target="_blank">here</a>
 
-## Quick Start
+## Screenshots
 
-The Ignite boilerplate project's structure will look similar to this:
+Homescreen:
 
-```
-ignite-project
-├── app
-│   ├── components
-│   ├── config
-│   ├── i18n
-│   ├── models
-│   ├── navigators
-│   ├── screens
-│   ├── services
-│   ├── theme
-│   ├── utils
-│   └── app.tsx
-├── assets
-│   ├── icons
-│   └── images
-├── test
-│   ├── __snapshots__
-│   ├── mockFile.ts
-│   └── setup.ts
-├── README.md
-├── android
-│   ├── app
-│   ├── build.gradle
-│   ├── gradle
-│   ├── gradle.properties
-│   ├── gradlew
-│   ├── gradlew.bat
-│   ├── keystores
-│   └── settings.gradle
-├── ignite
-│   └── templates
-|       |── app-icon
-│       ├── component
-│       ├── model
-│       ├── navigator
-│       └── screen
-├── index.js
-├── ios
-│   ├── IgniteProject
-│   ├── IgniteProject-tvOS
-│   ├── IgniteProject-tvOSTests
-│   ├── IgniteProject.xcodeproj
-│   └── IgniteProjectTests
-├── .env
-└── package.json
+<img src="others/screenshots/homescreen.png" width="280" height="640" alt="Homescreen">
 
-```
+Empty list:
 
-### ./app directory
+<img src="others/screenshots/emptyscreen.png" width="280" height="640" alt="Homescreen">
 
-Included in an Ignite boilerplate project is the `app` directory. This is a directory you would normally have to create when using vanilla React Native.
+Post detail screen:
 
-The inside of the `app` directory looks similar to the following:
+<img src="others/screenshots/postdetailscreen.png" width="280" height="640" alt="Post Detail Screen">
 
-```
-app
-├── components
-├── config
-├── i18n
-├── models
-├── navigators
-├── screens
-├── services
-├── theme
-├── utils
-└── app.tsx
-```
+Loading indicator:
 
-**components**
-This is where your reusable components live which help you build your screens.
+<img src="others/screenshots/loading.png" width="280" height="640" alt="Homescreen">
 
-**i18n**
-This is where your translations will live if you are using `react-native-i18n`.
+Error alert:
 
-**models**
-This is where your app's models will live. Each model has a directory which will contain the `mobx-state-tree` model file, test file, and any other supporting files like actions, types, etc.
-
-**navigators**
-This is where your `react-navigation` navigators will live.
-
-**screens**
-This is where your screen components will live. A screen is a React component which will take up the entire screen and be part of the navigation hierarchy. Each screen will have a directory containing the `.tsx` file, along with any assets or other helper files.
-
-**services**
-Any services that interface with the outside world will live here (think REST APIs, Push Notifications, etc.).
-
-**theme**
-Here lives the theme for your application, including spacing, colors, and typography.
-
-**utils**
-This is a great place to put miscellaneous helpers and utilities. Things like date helpers, formatters, etc. are often found here. However, it should only be used for things that are truly shared across your application. If a helper or utility is only used by a specific component or model, consider co-locating your helper with that component or model.
-
-**app.tsx** This is the entry point to your app. This is where you will find the main App component which renders the rest of the application.
-
-### ./assets directory
-
-This directory is designed to organize and store various assets, making it easy for you to manage and use them in your application. The assets are further categorized into subdirectories, including `icons` and `images`:
-
-```
-assets
-├── icons
-└── images
-```
-
-**icons**
-This is where your icon assets will live. These icons can be used for buttons, navigation elements, or any other UI components. The recommended format for icons is PNG, but other formats can be used as well.
-
-Ignite comes with a built-in `Icon` component. You can find detailed usage instructions in the [docs](https://github.com/infinitered/ignite/blob/master/docs/Components-Icon.md).
-
-**images**
-This is where your images will live, such as background images, logos, or any other graphics. You can use various formats such as PNG, JPEG, or GIF for your images.
-
-Another valuable built-in component within Ignite is the `AutoImage` component. You can find detailed usage instructions in the [docs](https://github.com/infinitered/ignite/blob/master/docs/Components-AutoImage.md).
-
-How to use your `icon` or `image` assets:
-
-```
-import { Image } from 'react-native';
-
-const MyComponent = () => {
-  return (
-    <Image source={require('../assets/images/my_image.png')} />
-  );
-};
-```
-
-### ./ignite directory
-
-The `ignite` directory stores all things Ignite, including CLI and boilerplate items. Here you will find templates you can customize to help you get started with React Native.
-
-### ./test directory
-
-This directory will hold your Jest configs and mocks.
-
-## Running Maestro end-to-end tests
-
-Follow our [Maestro Setup](https://ignitecookbook.com/docs/recipes/MaestroSetup) recipe from the [Ignite Cookbook](https://ignitecookbook.com/)!
-
-## Previous Boilerplates
-
-- [2018 aka Bowser](https://github.com/infinitered/ignite-bowser)
-- [2017 aka Andross](https://github.com/infinitered/ignite-andross)
-- [2016 aka Ignite 1.0](https://github.com/infinitered/ignite-ir-boilerplate-2016)
+<img src="others/screenshots/erroralert.png" width="280" height="640" alt="Homescreen">
